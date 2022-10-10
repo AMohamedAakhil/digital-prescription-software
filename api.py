@@ -69,7 +69,7 @@ class RxNorm:
             return {}
 
     def get_other_info(self):
-        dosage = input("Enter dosage (Morn,Afn,Eve,Ngt): ".split(","))
+        dosage = input("Enter dosage (Morn,Afn,Eve,Ngt): ").split(",")
         duration = input("Enter duration (in days): ")
         route = input("Enter administration route: ")
         frequency = input("Enter frequency: ")
