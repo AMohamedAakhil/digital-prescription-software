@@ -16,6 +16,7 @@ def confirm_continue():
 
 while continue_loop:
     print("Drug Count", count)
+    count += 1
     drug_details = instance.get_required_drug()
     if not drug_details:
         confirm_continue()
