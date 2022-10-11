@@ -1,8 +1,7 @@
-import json
-
 import requests
 
 from assets import shell_assets
+
 
 class RxNorm:
 
