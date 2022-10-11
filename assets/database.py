@@ -17,22 +17,17 @@ class Database:
         self.db.execute("CREATE TABLE prescription "
                         "(rxcui INTEGER,"
                         "drug_name TEXT, "
-                        "drug_type TEXT, "
                         "synonym TEXT, "
-                        "dosage TEXT, "
-                        "frequency TEXT, "
-                        "duration TEXT, "
-                        "route TEXT, "
-                        "instructions TEXT)")
+                        "drug_type TEXT,"
+                        )
         self.db.commit()
 
     def insert_data(self, data: dict):
         self.db.execute("INSERT INTO prescription"
-                        "(rxcui, drug_name, drug_type, synonym, dosage, frequency, duration, route, instructions) "
-                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                        (data.get("rxcui"), data.get("name"), data.get("type"), data.get("synonym"),
-                         data.get("dosage"), data.get("frequency"), data.get("duration"), data.get("route"),
-                         data.get("additional_info")))
+                        "(rxcui, drug_name, synonym, drug_type)"
+                        "VALUES (?, ?, ?, ?)",
+                        (data.get("rxcui"), data.get("name"), data.get("synonym"), data.get("type"),
+                         ))
         self.db.commit()
 
     def retrieve_data(self):
