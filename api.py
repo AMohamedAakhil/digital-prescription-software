@@ -15,7 +15,7 @@ class RxNorm:
             "BPCK": "Branded Pack"
         }
 
-    def get_drug_list(self, name: str):
+    def get_drug_list(self, name):
         url = self.base_url + name
         response = requests.get(url, headers=self.headers)
         return response.json()
