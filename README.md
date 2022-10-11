@@ -13,3 +13,8 @@ into the solution
 Success Criteria:
 
 User can create a prescription for one drug within 30-45 seconds
+
+## Prerequisites to run the program
+
+<code> pip install tkinter </code>
+
