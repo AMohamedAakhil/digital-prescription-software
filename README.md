@@ -18,3 +18,6 @@ User can create a prescription for one drug within 30-45 seconds
 
 <code> pip install tkinter </code>
 
+## Running the Program
+
+Execute main.py file
