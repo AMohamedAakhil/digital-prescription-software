@@ -28,12 +28,9 @@ class RxNorm:
                     name = property.get("name")
                     synonym = property.get("synonym")
                     type = self.tty_dict.get(property.get("tty"), "Generic Product")
-                    print(f"RXCUI: {shell_assets.colour_yellow(rxcui)}")
-                    print(f"Name: {shell_assets.colour_blue(name)}")
-                    if synonym:
-                        print(f"Synonym: {synonym}")
-                    print(f"Type: {shell_assets.colour_cyan(type)}")
-                    print()
+                    
+                    dict = {'rxcui' : rxcui, 'name' : name, 'synonym' : synonym, 'type' : type}
+                    return dict
 
     def fetch_drug_from_rxcui(self, concept_group: list, rxcui: str):
         for entry in concept_group:
