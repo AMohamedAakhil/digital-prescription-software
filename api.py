@@ -68,7 +68,7 @@ class RxNorm:
             return {}
 
     def get_other_info(self):
-        dosage = input("Enter dosage (Morn,Afn,Eve,Ngt): ").split(",")
+        dosage = input("Enter dosage (Morn,Afn,Eve,Ngt): ")
         duration = input("Enter duration (in days): ")
         route = input("Enter administration route: ")
         frequency = input("Enter frequency: ")
@@ -78,5 +78,27 @@ class RxNorm:
             "duration": duration,
             "route": route,
             "frequency": frequency,
-            "additional_info": additional_info
+            "additional_info": additional_info if additional_info else "None"
         }
+
+    def merge_data(self, drug: dict, other_info: dict):
+        final_dict = {
+            "rxcui": drug.get("rxcui"),
+            "name": drug.get("name"),
+            "synonym": drug.get("synonym", "None"),
+            "type": drug.get("type"),
+            "dosage": other_info.get("dosage"),
+            "duration": other_info.get("duration"),
+            "route": other_info.get("route"),
+            "frequency": other_info.get("frequency"),
+            "additional_info": other_info.get("additional_info")
+        }
+        return final_dict
+
+    def pretty_print(self, data):
+        print("{:<7} | {:<25} | {:<15} | {:<10} | {:<10} | {:<10} | {:<10} | {:<10} | {:<10}".format(
+            'RXCUI', 'Name', 'Type', 'Synonym', 'Dosage', 'Frequency', 'Duration', 'Route', 'Instructions'))
+        for entry in data:
+            rxcui, name, type, synonym, dosage, frequency, duration, route, additional_info = entry
+            print("{:<7} | {:<25} | {:<15} | {:<10} | {:<10} | {:<10} | {:<10} | {:<10} | {:<10}".format(
+                str(rxcui), name[:25], type[:15], synonym[:10], dosage[:10], frequency[:10], duration[:10], route[:10], additional_info[:10]))
