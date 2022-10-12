@@ -14,10 +14,14 @@ root.geometry('600x600')
 search_box = Entry(root, width=40, borderwidth=10, relief=SUNKEN)
 search_box.grid(row=0, column=0)
 
+final_name = {}
 
 def Search_Click():
     global search_box
     global string
+    
+
+    
     string = search_box.get()
     x = instance.get_drug_list(string)
     result = x.get('drugGroup').get('conceptGroup')
@@ -30,7 +34,7 @@ def Search_Click():
     #label1 = Label(root, text = result)
     #label1.pack()
 
-prescription_list = []
+prescription_list = final_name
 
 def Add_To_Prescription():
     global add_to_prescription
@@ -39,9 +43,9 @@ def Add_To_Prescription():
     result = x.get('drugGroup').get('conceptGroup')
     
     final_name = result[2]['conceptProperties'][0]['name']
-    prescription_list.append(final_name)
 
-    label2 = Label(root, text='Updated prescription list is: ' + str(prescription_list))
+
+    label2 = Label(root, text='Updated prescription list is: ' + str(final_name))
     label2.grid(row=6, column=0)
 
 
@@ -67,7 +71,7 @@ db.create_db()
 prescription = prescription_list
 
 db.insert_data(prescription)
-print(db.retrieve_data())
+
 
 """"
 count = 1
