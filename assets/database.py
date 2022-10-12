@@ -14,12 +14,7 @@ class Database:
     def create_db(self):
         open("prescription.db", "w").close()
         self.db = sqlite3.connect("prescription.db")
-        self.db.execute("CREATE TABLE prescription "
-                        "(rxcui INTEGER,"
-                        "drug_name TEXT, "
-                        "synonym TEXT, "
-                        "drug_type TEXT,"
-                        )
+        self.db.execute("CREATE TABLE prescription (rxcui INTEGER, drug_name TEXT, synonym TEXT, drug_type TEXT)")
         self.db.commit()
 
     def insert_data(self, data: dict):

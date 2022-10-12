@@ -64,7 +64,7 @@ db = database.Database()
 db.connect_db()
 db.create_db()
 
-prescription = gui.prescription_list
+prescription = prescription_list
 
 db.insert_data(prescription)
 print(db.retrieve_data())
